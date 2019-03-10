@@ -1,8 +1,5 @@
 const path = require('path');
-const webpack = require('webpack');
 const HtmlWebPackPlugin = require("html-webpack-plugin");
-
-const relativePath = '..'
 
 module.exports = {
   mode: 'development',
@@ -17,7 +14,7 @@ module.exports = {
         use: [
           'react-hot-loader/webpack',
           'babel-loader',
-          // 'eslint-loader',
+          'eslint-loader',
         ],
       },
       // {
