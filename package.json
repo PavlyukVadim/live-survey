@@ -40,6 +40,8 @@
   },
   "dependencies": {
     "react": "^16.8.4",
-    "react-dom": "^16.8.4"
+    "react-dom": "^16.8.4",
+    "react-live-form": "^1.0.7",
+    "react-router-dom": "^5.0.0"
   }
 }
