@@ -7,22 +7,34 @@ const stateOptions = [
   { key: 'disabled', text: 'Disabled', value: 'disabled' },
 ]
 
-// state: {
-//   value: {
-//     // defaultValue: 0,
-//     // valueExpr: 'c * 2',
-//   },
-//   display: {
-//     // defaultValue: false,
-//     // valueExpr: 'a > 10',
-//   },
-//   disabled: {
-//     // defaultValue: false,
-//     // valueExpr: 'a > 34',
-//   },
-// },
-
 class FieldStateInputs extends Component {
+  state = {
+    stateOption: 'value',
+  }
+
+  onChangeStateOption = (e, data) => {
+    const { value } = data
+    this.setState({
+      stateOption: value,
+    })
+  }
+
+  onChangeDefaultValue = (e, data) => {
+    const { value } = data
+    const { onChangeFieldConfig } = this.props
+    const { stateOption } = this.state
+
+    onChangeFieldConfig(`state.${stateOption}.defaultValue`, value)
+  }
+
+  onChangeValueExpresion = (e, data) => {
+    const { value } = data
+    const { onChangeFieldConfig } = this.props
+    const { stateOption } = this.state
+
+    onChangeFieldConfig(`state.${stateOption}.valueExpr`, value)
+  }
+
   render() {
     return (
       <>
@@ -33,16 +45,19 @@ class FieldStateInputs extends Component {
             label="State option"
             options={stateOptions}
             defaultValue="value"
+            onChange={this.onChangeStateOption}
           />
           <Form.Input
             fluid
             label="Default value"
             placeholder="Value"
+            onChange={this.onChangeDefaultValue}
           />
           <Form.Input
             fluid
             label="Value expresion"
             placeholder='Expresion'
+            onChange={this.onChangeValueExpresion}
           />
         </Form.Group>
       </>

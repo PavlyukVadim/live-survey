@@ -43,19 +43,25 @@ const fieldTypeOptions = [
 
 class FieldEditor extends Component {
   render() {
+    const {
+      formConfig,
+      onChangeFieldConfig,
+    } = this.props
     return (
       <div>
         FieldEditor
         <Form>
-          <FieldMainInputs />
-          <FieldPropsInputs />
-          <FieldStateInputs />
-          {/* <Form.Field
+          <FieldMainInputs onChangeFieldConfig={onChangeFieldConfig} />
+          <FieldPropsInputs onChangeFieldConfig={onChangeFieldConfig} />
+          <FieldStateInputs onChangeFieldConfig={onChangeFieldConfig} />
+          <Form.Field
             id="form-textarea-control-opinion"
             control={TextArea}
             label="Opinion"
             placeholder="Opinion"
+            value={JSON.stringify(formConfig, null, 2)}
           />
+          {/*
           <Form.Field
             id="form-button-control-public"
             control={Button}

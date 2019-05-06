@@ -7,6 +7,7 @@ import {
   Segment,
 } from 'semantic-ui-react'
 import LiveForm from 'react-live-form'
+import { set } from 'utils'
 import FieldEditor from './field-editor'
 
 const formConfig1 = {
@@ -72,6 +73,8 @@ const formConfig1 = {
   ],
 }
 
+console.log('set', set)
+
 class FormBuilder extends Component {
   state = {
     formConfig: {
@@ -117,12 +120,32 @@ class FormBuilder extends Component {
     })
   }
 
-  onChangeFieldName = (field) => {
-    const { activeField } = this.state
+  onChangeFieldConfig = (key, value) => {
+    const { activeField, formConfig } = this.state
+
+    const { fields } = formConfig
+    const newFields = [...fields]
+
+    const fieldConfig = set(newFields[activeField], key, value)
+    newFields[activeField] = fieldConfig
+
+    const newFormConfig = {
+      ...formConfig,
+      fields: newFields,
+    }
+
+    this.setState(() => {
+      return {
+        formConfig: newFormConfig,
+      }
+    })
+
+    console.log('onChangeFieldConfig', activeField, key, value)
   }
 
   render() {
     const { formConfig } = this.state
+    // console
     return (
       <div>
         <Segment>
@@ -135,7 +158,10 @@ class FormBuilder extends Component {
               >
                 Add field
               </Button>
-              <FieldEditor />
+              <FieldEditor
+                formConfig={formConfig}
+                onChangeFieldConfig={this.onChangeFieldConfig}
+              />
             </Grid.Column>
             <Grid.Column>
               <LiveForm formConfig={formConfig} />

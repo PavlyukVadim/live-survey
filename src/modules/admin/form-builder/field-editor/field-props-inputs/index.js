@@ -3,6 +3,7 @@ import { Form } from 'semantic-ui-react'
 
 class FieldPropsInputs extends Component {
   render() {
+    const { onChangeFieldConfig } = this.props
     return (
       <>
         <h3>Field props</h3>
@@ -10,6 +11,7 @@ class FieldPropsInputs extends Component {
           fluid
           label="Field title"
           placeholder="Title"
+          onChange={(e, d) => onChangeFieldConfig('props.title', d.value)}
         />
       </>
     )

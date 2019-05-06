@@ -17,19 +17,21 @@ const fieldTypeOptions = [
 
 class FieldMainInputs extends Component {
   render() {
+    const { onChangeFieldConfig } = this.props
     return (
       <>
         <Form.Field id="form-input-name">
           <label>Field name</label>
           <Input
             placeholder="Name"
-            onChange={() => {}}
+            onChange={(e, d) => onChangeFieldConfig('name', d.value)}
           />
         </Form.Field>
         <Form.Field id="form-select-type">
           <label>Field type</label>
           <Select
             placeholder="Select field type"
+            onChange={(e, d) => onChangeFieldConfig('fieldType', d.value)}
             options={fieldTypeOptions}
             defaultValue="input"
             search

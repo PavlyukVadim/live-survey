@@ -61,6 +61,9 @@ module.exports = {
       path.resolve(__dirname),
       'node_modules',
     ],
+    alias: {
+      utils: path.resolve(__dirname, 'src/utils/'),
+    },
     extensions: ['.js', '.css'],
   },
   plugins: [
