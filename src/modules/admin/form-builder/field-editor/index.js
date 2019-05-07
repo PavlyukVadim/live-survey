@@ -49,7 +49,6 @@ class FieldEditor extends Component {
     } = this.props
     return (
       <div>
-        FieldEditor
         <Form>
           <FieldMainInputs onChangeFieldConfig={onChangeFieldConfig} />
           <FieldPropsInputs onChangeFieldConfig={onChangeFieldConfig} />
@@ -59,6 +58,7 @@ class FieldEditor extends Component {
             control={TextArea}
             label="Opinion"
             placeholder="Opinion"
+            rows={7}
             value={JSON.stringify(formConfig, null, 2)}
           />
           {/*

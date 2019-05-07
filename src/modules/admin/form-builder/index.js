@@ -8,6 +8,7 @@ import {
 } from 'semantic-ui-react'
 import LiveForm from 'react-live-form'
 import { set } from 'utils'
+import FieldsController from './fields-controller'
 import FieldEditor from './field-editor'
 
 const formConfig1 = {
@@ -73,8 +74,6 @@ const formConfig1 = {
   ],
 }
 
-console.log('set', set)
-
 class FormBuilder extends Component {
   state = {
     formConfig: {
@@ -89,25 +88,15 @@ class FormBuilder extends Component {
       const fields = [
         ...prevState.formConfig.fields,
         {
-          name: 'a',
+          name: '',
           fieldType: 'input',
-          dataType: 'int',
           props: {
-            title: 'field a',
+            title: 'Title',
           },
           state: {
-            value: {
-              // defaultValue: 0,
-              // valueExpr: 'c * 2',
-            },
-            display: {
-              // defaultValue: false,
-              // valueExpr: 'a > 10',
-            },
-            disabled: {
-              // defaultValue: false,
-              // valueExpr: 'a > 34',
-            },
+            value: {},
+            display: {},
+            disabled: {},
           },
         },
       ]
@@ -151,13 +140,9 @@ class FormBuilder extends Component {
         <Segment>
           <Grid columns={2} relaxed='very'>
             <Grid.Column>
-              <h3>Config</h3>
-              <Button
-                primary
-                onClick={this.addField}
-              >
-                Add field
-              </Button>
+              <FieldsController
+                addField={this.addField}
+              />
               <FieldEditor
                 formConfig={formConfig}
                 onChangeFieldConfig={this.onChangeFieldConfig}
