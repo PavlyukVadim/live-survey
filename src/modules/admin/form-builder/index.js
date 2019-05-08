@@ -85,10 +85,11 @@ class FormBuilder extends Component {
   addField = () => {
     this.setState((prevState) => {
       const formConfig = Object.assign({}, prevState.formConfig)
+      const currentIndex = prevState.formConfig.fields.length
       const fields = [
         ...prevState.formConfig.fields,
         {
-          name: '',
+          name: `name ${currentIndex}`,
           fieldType: 'input',
           props: {
             title: 'Title',
@@ -108,6 +109,21 @@ class FormBuilder extends Component {
       }
     })
   }
+
+  removeField = () => {
+    this.setState((prevState) => {
+      const { activeField, formConfig } = prevState
+      const newFormConfig = Object.assign({}, formConfig)
+      const fields = [...formConfig.fields]
+      fields.splice(activeField, 1)
+      newFormConfig.fields = fields
+      return {
+        formConfig: newFormConfig,
+      }
+    })
+  }
+
+  // onChange
 
   onChangeFieldConfig = (key, value) => {
     const { activeField, formConfig } = this.state
@@ -132,8 +148,22 @@ class FormBuilder extends Component {
     console.log('onChangeFieldConfig', activeField, key, value)
   }
 
+  getFieldsOptions = () => {
+    const { formConfig: { fields } } = this.state
+    const options = fields.map((fieldConfig) => {
+      const { name } = fieldConfig
+      return {
+        key: name,
+        text: name,
+        value: name,
+      }
+    })
+    return options
+  }
+
   render() {
     const { formConfig } = this.state
+    const fieldsOptions = this.getFieldsOptions()
     // console
     return (
       <div>
@@ -142,6 +172,8 @@ class FormBuilder extends Component {
             <Grid.Column>
               <FieldsController
                 addField={this.addField}
+                removeField={this.removeField}
+                fieldsOptions={fieldsOptions}
               />
               <FieldEditor
                 formConfig={formConfig}
