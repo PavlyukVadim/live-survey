@@ -76,6 +76,14 @@ class FormBuilder extends Component {
     activeFieldIndex: 0,
   }
 
+  onChangeFormConfig = (newFormConfig) => {
+    this.setState(() => {
+      return {
+        formConfig: newFormConfig,
+      }
+    })
+  }
+
   addField = () => {
     this.setState((prevState) => {
       const formConfig = Object.assign({}, prevState.formConfig)
@@ -86,20 +94,20 @@ class FormBuilder extends Component {
           name: `name${currentIndex}`,
           fieldType: 'input',
           props: {
-            title: 'Title',
+            title: `Title ${currentIndex}: `,
           },
           state: {
             value: {
               defaultValue: '',
-              // valueExpr: 'c * 2',
+              valueExpr: '',
             },
             display: {
               defaultValue: true,
-              // valueExpr: 'a > 10',
+              valueExpr: '',
             },
             disabled: {
               defaultValue: false,
-              // valueExpr: 'a > 34',
+              valueExpr: '',
             },
           },
         },
@@ -192,6 +200,7 @@ class FormBuilder extends Component {
               <FieldEditor
                 formConfig={formConfig}
                 activeField={activeField}
+                onChangeFormConfig={this.onChangeFormConfig}
                 onChangeFieldConfig={this.onChangeFieldConfig}
               />
             </Grid.Column>
