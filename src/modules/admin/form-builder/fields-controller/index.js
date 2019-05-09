@@ -43,6 +43,7 @@ class FieldsController extends Component {
                     onChange={this.onChangeActiveField}
                   />
                   <Form.Button
+                    fluid
                     negative
                     label="Remove field"
                     onClick={removeField}
@@ -53,6 +54,7 @@ class FieldsController extends Component {
               )
             }
             <Form.Button
+              fluid={isFieldsExist}
               positive
               label="Add field"
               onClick={addField}

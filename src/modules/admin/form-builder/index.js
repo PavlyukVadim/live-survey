@@ -186,6 +186,7 @@ class FormBuilder extends Component {
     const { activeFieldIndex, formConfig } = this.state
     const fieldsOptions = this.getFieldsOptions()
     const activeField = formConfig.fields[activeFieldIndex] || {}
+    console.log('formConfig', formConfig)
 
     return (
       <div>
