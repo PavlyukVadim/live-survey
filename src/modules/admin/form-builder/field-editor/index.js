@@ -1,12 +1,5 @@
 import React, { Component } from 'react'
-import {
-  Form,
-  // Input,
-  TextArea,
-  Button,
-  // Select,
-} from 'semantic-ui-react'
-
+import { Form, TextArea } from 'semantic-ui-react'
 import FieldMainInputs from './field-main-inputs'
 import FieldPropsInputs from './field-props-inputs'
 import FieldStateInputs from './field-state-inputs'
@@ -44,15 +37,25 @@ const fieldTypeOptions = [
 class FieldEditor extends Component {
   render() {
     const {
+      activeField,
       formConfig,
       onChangeFieldConfig,
     } = this.props
     return (
       <div>
         <Form>
-          <FieldMainInputs onChangeFieldConfig={onChangeFieldConfig} />
-          <FieldPropsInputs onChangeFieldConfig={onChangeFieldConfig} />
-          <FieldStateInputs onChangeFieldConfig={onChangeFieldConfig} />
+          <FieldMainInputs
+            activeField={activeField}
+            onChangeFieldConfig={onChangeFieldConfig}
+          />
+          <FieldPropsInputs
+            activeField={activeField}
+            onChangeFieldConfig={onChangeFieldConfig}
+          />
+          <FieldStateInputs
+            activeField={activeField}
+            onChangeFieldConfig={onChangeFieldConfig}
+          />
           <Form.Field
             id="form-textarea-control-opinion"
             control={TextArea}

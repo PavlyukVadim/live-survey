@@ -2,15 +2,30 @@ import React, { Component } from 'react'
 import { Form } from 'semantic-ui-react'
 
 class FieldsController extends Component {
+  onChangeActiveField = (e, data) => {
+    const {
+      onChangeActiveFieldIndex,
+      fieldsOptions,
+    } = this.props
+    const { value } = data
+    const index = fieldsOptions.findIndex((option) => {
+      return (option.value === value)
+    })
+    onChangeActiveFieldIndex(index)
+  }
+
   render() {
     const {
       fieldsOptions,
       addField,
       removeField,
+      activeFieldIndex,
     } = this.props
 
     const isFieldsExist = !!fieldsOptions.length
-    const defaultFieldsValue = fieldsOptions[0] ? fieldsOptions[0].value : ''
+    const defaultFieldsValue = fieldsOptions[activeFieldIndex]
+      ? fieldsOptions[activeFieldIndex].value
+      : ''
 
     return (
       <>
@@ -22,10 +37,10 @@ class FieldsController extends Component {
                 <>
                   <Form.Select
                     fluid
-                    label="State option"
+                    label="Choose field"
                     options={fieldsOptions}
                     value={defaultFieldsValue}
-                    // onChange={this.onChangeStateOption}
+                    onChange={this.onChangeActiveField}
                   />
                   <Form.Button
                     negative

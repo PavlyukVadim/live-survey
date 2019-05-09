@@ -1,11 +1,5 @@
 import React, { Component } from 'react'
-import {
-  Divider,
-  Grid,
-  // Image,
-  Button,
-  Segment,
-} from 'semantic-ui-react'
+import { Divider, Grid, Segment } from 'semantic-ui-react'
 import LiveForm from 'react-live-form'
 import { set } from 'utils'
 import FieldsController from './fields-controller'
@@ -79,7 +73,7 @@ class FormBuilder extends Component {
     formConfig: {
       fields: [],
     },
-    activeField: 0,
+    activeFieldIndex: 0,
   }
 
   addField = () => {
@@ -89,15 +83,24 @@ class FormBuilder extends Component {
       const fields = [
         ...prevState.formConfig.fields,
         {
-          name: `name ${currentIndex}`,
+          name: `name${currentIndex}`,
           fieldType: 'input',
           props: {
             title: 'Title',
           },
           state: {
-            value: {},
-            display: {},
-            disabled: {},
+            value: {
+              defaultValue: '',
+              // valueExpr: 'c * 2',
+            },
+            display: {
+              defaultValue: true,
+              // valueExpr: 'a > 10',
+            },
+            disabled: {
+              defaultValue: false,
+              // valueExpr: 'a > 34',
+            },
           },
         },
       ]
@@ -106,33 +109,33 @@ class FormBuilder extends Component {
 
       return {
         formConfig,
+        activeFieldIndex: fields.length - 1,
       }
     })
   }
 
   removeField = () => {
     this.setState((prevState) => {
-      const { activeField, formConfig } = prevState
+      const { activeFieldIndex, formConfig } = prevState
       const newFormConfig = Object.assign({}, formConfig)
       const fields = [...formConfig.fields]
-      fields.splice(activeField, 1)
+      fields.splice(activeFieldIndex, 1)
       newFormConfig.fields = fields
       return {
         formConfig: newFormConfig,
+        activeFieldIndex: activeFieldIndex - 1,
       }
     })
   }
 
-  // onChange
-
   onChangeFieldConfig = (key, value) => {
-    const { activeField, formConfig } = this.state
+    const { activeFieldIndex, formConfig } = this.state
 
     const { fields } = formConfig
     const newFields = [...fields]
 
-    const fieldConfig = set(newFields[activeField], key, value)
-    newFields[activeField] = fieldConfig
+    const fieldConfig = set(newFields[activeFieldIndex], key, value)
+    newFields[activeFieldIndex] = fieldConfig
 
     const newFormConfig = {
       ...formConfig,
@@ -145,7 +148,15 @@ class FormBuilder extends Component {
       }
     })
 
-    console.log('onChangeFieldConfig', activeField, key, value)
+    console.log('onChangeFieldConfig', activeFieldIndex, key, value)
+  }
+
+  onChangeActiveFieldIndex = (newActiveFieldIndex) => {
+    this.setState(() => {
+      return {
+        activeFieldIndex: newActiveFieldIndex,
+      }
+    })
   }
 
   getFieldsOptions = () => {
@@ -162,9 +173,10 @@ class FormBuilder extends Component {
   }
 
   render() {
-    const { formConfig } = this.state
+    const { activeFieldIndex, formConfig } = this.state
     const fieldsOptions = this.getFieldsOptions()
-    // console
+    const activeField = formConfig.fields[activeFieldIndex] || {}
+
     return (
       <div>
         <Segment>
@@ -173,10 +185,13 @@ class FormBuilder extends Component {
               <FieldsController
                 addField={this.addField}
                 removeField={this.removeField}
+                onChangeActiveFieldIndex={this.onChangeActiveFieldIndex}
                 fieldsOptions={fieldsOptions}
+                activeFieldIndex={activeFieldIndex}
               />
               <FieldEditor
                 formConfig={formConfig}
+                activeField={activeField}
                 onChangeFieldConfig={this.onChangeFieldConfig}
               />
             </Grid.Column>
