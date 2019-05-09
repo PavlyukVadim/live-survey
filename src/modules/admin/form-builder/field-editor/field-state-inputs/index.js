@@ -21,7 +21,6 @@ class FieldStateInputs extends Component {
   }
 
   onChangeDefaultValue = (e, data) => {
-    console.log('data', data)
     const { value } = data
     const { onChangeFieldConfig } = this.props
     const { stateOption } = this.state
@@ -67,8 +66,7 @@ class FieldStateInputs extends Component {
                 <Form.Checkbox
                   toggle
                   label="Default value"
-                  placeholder="Value"
-                  value={get(activeField, `state.${stateOption}.defaultValue`)}
+                  checked={get(activeField, `state.${stateOption}.defaultValue`)}
                   onChange={(e, d) => this.onChangeDefaultValue(e, {
                     value: d.checked,
                   })}

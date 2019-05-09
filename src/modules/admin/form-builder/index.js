@@ -73,7 +73,7 @@ class FormBuilder extends Component {
     formConfig: {
       fields: [],
     },
-    activeFieldIndex: 0,
+    activeFieldIndex: null,
   }
 
   onChangeFormConfig = (newFormConfig) => {
@@ -131,7 +131,9 @@ class FormBuilder extends Component {
       newFormConfig.fields = fields
       return {
         formConfig: newFormConfig,
-        activeFieldIndex: activeFieldIndex - 1,
+        activeFieldIndex: (activeFieldIndex !== 0)
+          ? activeFieldIndex - 1
+          : null,
       }
     })
   }
@@ -197,12 +199,17 @@ class FormBuilder extends Component {
                 fieldsOptions={fieldsOptions}
                 activeFieldIndex={activeFieldIndex}
               />
-              <FieldEditor
-                formConfig={formConfig}
-                activeField={activeField}
-                onChangeFormConfig={this.onChangeFormConfig}
-                onChangeFieldConfig={this.onChangeFieldConfig}
-              />
+              {
+                (activeFieldIndex !== null) &&
+                (
+                  <FieldEditor
+                    formConfig={formConfig}
+                    activeField={activeField}
+                    onChangeFormConfig={this.onChangeFormConfig}
+                    onChangeFieldConfig={this.onChangeFieldConfig}
+                  />
+                )
+              }
             </Grid.Column>
             <Grid.Column>
               <LiveForm formConfig={formConfig} />
