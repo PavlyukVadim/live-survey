@@ -6,6 +6,7 @@
     "node": true
   },
   "rules": {
+    "require-yield": [1],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "arrow-parens": [0, "as-needed"],
     "semi": [0],
