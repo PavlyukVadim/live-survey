@@ -5,17 +5,18 @@ import {
   Switch,
   // Link,
 } from 'react-router-dom'
-import Admin from '../admin'
-import SurveyBuilder from '../SurveyBuilder'
+import Header from './header'
+import CreateComponent from '../create'
+import Dashboard from '../dashboard'
 
 const App = () => (
   <div>
-    <h1>Header</h1>
+    <Header />
     <HashRouter>
       <Switch>
-        <Route exact path="/" component={SurveyBuilder} />
-        <Route path="/create" component={Admin} />
-        <Route path="/contact" component={SurveyBuilder} />
+        <Route exact path="/" component={Dashboard} />
+        <Route path="/create" component={CreateComponent} />
+        <Route path="/contact" component={Dashboard} />
       </Switch>
     </HashRouter>
   </div>

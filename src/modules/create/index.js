@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import FormBuilder from './form-builder'
 
-class AdminComponent extends Component {
+class CreateComponent extends Component {
   render() {
     return (
       <div>
@@ -11,4 +11,4 @@ class AdminComponent extends Component {
   }
 }
 
-export default AdminComponent
+export default CreateComponent
