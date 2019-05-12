@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { Header, Container, Grid } from 'semantic-ui-react'
+import { getYourForms } from '../../actions/requestActions'
 import FormCard from './form-card'
 import './index.scss'
 
+console.log('getYourForms', getYourForms)
 
 const forms = [
   {
@@ -38,6 +41,13 @@ const forms = [
 ]
 
 class Dashboard extends Component {
+  componentDidMount() {
+    const { getForms } = this.props
+    if (getForms) {
+      getForms()
+    }
+  }
+
   render() {
     const formCards = forms.map((form) => {
       return (
@@ -73,4 +83,15 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard
+const mapStateToProps = (state) => ({
+  ...state,
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  getForms: () => dispatch(getYourForms()),
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Dashboard)

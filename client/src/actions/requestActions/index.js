@@ -1,3 +1,9 @@
+export { GET_YOUR_FORMS } from './form'
+export { getYourForms } from './form'
+
+export { GOT_YOUR_FORMS } from './form'
+export { gotYourForms } from './form'
+
 export const GET_USER = 'GET_USER'
 export const getUser = (id) => ({
   type: GET_USER,
