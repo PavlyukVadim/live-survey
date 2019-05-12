@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Container } from 'semantic-ui-react'
+import { Container, Tab } from 'semantic-ui-react'
 import LiveFormBuilder from '../live-form-builder'
 
 const initialForm = {
@@ -66,10 +66,29 @@ const initialForm = {
 
 class FormViewer extends Component {
   render() {
+    const panes = [
+      {
+        menuItem: 'Answers',
+        render: () => (
+          <Tab.Pane attached={false}>
+            Tab 2 Content
+          </Tab.Pane>
+        ),
+      },
+      {
+        menuItem: 'Form',
+        render: () => (
+          <Tab.Pane attached={false}>
+            <LiveFormBuilder preloadedFormConfig={initialForm} />
+          </Tab.Pane>
+        ),
+      },
+    ]
+
     return (
       <div>
         <Container>
-          <LiveFormBuilder preloadedFormConfig={initialForm} />
+          <Tab menu={{ secondary: true }} panes={panes} />
         </Container>
       </div>
     )
