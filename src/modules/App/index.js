@@ -13,8 +13,8 @@ import SignUp from '../auth/sign-up'
 
 const App = () => (
   <div>
-    <Header />
     <HashRouter>
+      <Header />
       <Switch>
         <Route exact path="/" component={Dashboard} />
         <Route path="/sign-up" component={SignUp} />

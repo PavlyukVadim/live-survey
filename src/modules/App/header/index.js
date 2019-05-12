@@ -1,10 +1,33 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom'
 import { Menu, Segment } from 'semantic-ui-react'
 
 class MyHeader extends Component {
   state = { activeItem: 'dashboard' }
 
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+  handleItemClick = (e, { name }) => {
+    const { history } = this.props
+
+    switch (name) {
+      case 'dashboard': {
+        history.push('/')
+        break
+      }
+      case 'create': {
+        history.push('/create')
+        break
+      }
+      case 'logout': {
+        history.push('/sign-in')
+        break
+      }
+      default: {
+        break
+      }
+    }
+
+    this.setState({ activeItem: name })
+  }
 
   render() {
     const { activeItem } = this.state
@@ -18,7 +41,7 @@ class MyHeader extends Component {
             onClick={this.handleItemClick}
           />
           <Menu.Item
-            name='Create'
+            name='create'
             active={activeItem === 'create'}
             onClick={this.handleItemClick}
           />
@@ -37,4 +60,4 @@ class MyHeader extends Component {
   }
 }
 
-export default MyHeader
+export default withRouter(MyHeader)
