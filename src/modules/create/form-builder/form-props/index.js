@@ -1,5 +1,10 @@
 import React, { Component } from 'react'
-import { Form, Header } from 'semantic-ui-react'
+import {
+  Form,
+  Header,
+  Button,
+  Divider,
+} from 'semantic-ui-react'
 
 class FormProps extends Component {
   render() {
@@ -27,6 +32,12 @@ class FormProps extends Component {
             placeholder='Description'
           />
         </Form.Field>
+        <Form.Field>
+          <Button primary>
+            Publish form
+          </Button>
+        </Form.Field>
+        <Divider />
       </Form>
     )
   }
