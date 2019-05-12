@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Container } from 'semantic-ui-react'
 import FormBuilder from './form-builder'
 
-class CreateComponent extends Component {
+class FormCreator extends Component {
   render() {
     return (
       <div>
@@ -14,4 +14,4 @@ class CreateComponent extends Component {
   }
 }
 
-export default CreateComponent
+export default FormCreator

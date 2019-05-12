@@ -1,7 +1,13 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom'
 import { Card, Icon } from 'semantic-ui-react'
 
 class FormCard extends Component {
+  onCardClick = () => {
+    const { form: { id }, history } = this.props
+    history.push(`/forms/${id}`)
+  }
+
   render() {
     const { form } = this.props
     const {
@@ -11,7 +17,7 @@ class FormCard extends Component {
     } = form
 
     return (
-      <Card>
+      <Card onClick={this.onCardClick}>
         <Card.Content header={title} />
         <Card.Content description={description} />
         <Card.Content extra>
@@ -23,4 +29,4 @@ class FormCard extends Component {
   }
 }
 
-export default FormCard
+export default withRouter(FormCard)

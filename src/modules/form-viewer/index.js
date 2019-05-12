@@ -1,8 +1,8 @@
-import React from 'react'
-import LiveForm from 'react-live-form'
+import React, { Component } from 'react'
+import { Container } from 'semantic-ui-react'
+import LiveFormBuilder from '../live-form-builder'
 
-const formConfig = {
-  formName: 'firstForm',
+const initialForm = {
   fields: [
     {
       name: 'a',
@@ -64,11 +64,16 @@ const formConfig = {
   ],
 }
 
-const SurveyBuilder = () => (
-  <div>
-    SurveyBuilder
-    <LiveForm formConfig={formConfig} />
-  </div>
-)
+class FormViewer extends Component {
+  render() {
+    return (
+      <div>
+        <Container>
+          <LiveFormBuilder preloadedFormConfig={initialForm} />
+        </Container>
+      </div>
+    )
+  }
+}
 
-export default SurveyBuilder
+export default FormViewer

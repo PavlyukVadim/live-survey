@@ -6,31 +6,31 @@ import './index.scss'
 
 const forms = [
   {
+    id: 3,
     title: 'dad',
     description: 'fdsfdsf',
     anwsers: '4',
   },
   {
+    id: 4,
     title: 'dad',
     description: 'fdsfdsf',
     anwsers: '5',
   },
   {
+    id: 5,
     title: 'dad',
     description: 'fdsfdsf',
     anwsers: '6',
   },
   {
+    id: 6,
     title: 'dad',
     description: 'fdsfdsf',
     anwsers: '6',
   },
   {
-    title: 'dad',
-    description: 'fdsfdsf',
-    anwsers: '6',
-  },
-  {
+    id: 8,
     title: 'dad',
     description: 'fdsfdsf',
     anwsers: '6',
