@@ -3,6 +3,12 @@ import {
   getYourForms,
   GOT_YOUR_FORMS,
   gotYourForms,
+
+  GET_CURRENT_FORM,
+  getCurrentForm,
+
+  GOT_CURRENT_FORM,
+  gotCurrentForm,
 } from '../actions/requestActions'
 
 import {
@@ -23,21 +29,14 @@ const apiConfig = {
       method: 'get',
       url: `${host}/forms`,
     }),
-    // triggerActionType: GET_USER,
-    // successAction: gotUser,
-    // failureAction: gotFailure,
-    // getOptions: ({ id }) => ({
-    //   method: 'get',
-    //   url: `https://jsonplaceholder.typicode.com/todos/${id}`,
-    // }),
   },
-  getUser1: {
-    triggerActionType: GET_USER,
-    successAction: gotUser,
+  getCurrentForm: {
+    triggerActionType: GET_CURRENT_FORM,
+    successAction: gotCurrentForm,
     failureAction: gotFailure,
     getOptions: ({ id }) => ({
       method: 'get',
-      url: `https://jsonplaceholder.typicode.com/todos/${id}`,
+      url: `${host}/formById`,
     }),
   },
   createUser: {

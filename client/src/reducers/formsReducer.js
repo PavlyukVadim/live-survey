@@ -1,4 +1,7 @@
-import { GOT_YOUR_FORMS } from '../actions/requestActions'
+import {
+  GOT_YOUR_FORMS,
+  GOT_CURRENT_FORM,
+} from '../actions/requestActions'
 
 export default (state = {}, action) => {
   switch (action.type) {
@@ -6,6 +9,11 @@ export default (state = {}, action) => {
       return {
         ...state,
         yourForms: action.data,
+      }
+    case GOT_CURRENT_FORM:
+      return {
+        ...state,
+        currentForm: action.data,
       }
     default:
       return state

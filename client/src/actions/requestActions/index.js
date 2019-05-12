@@ -4,6 +4,12 @@ export { getYourForms } from './form'
 export { GOT_YOUR_FORMS } from './form'
 export { gotYourForms } from './form'
 
+export { GET_CURRENT_FORM } from './form'
+export { getCurrentForm } from './form'
+
+export { GOT_CURRENT_FORM } from './form'
+export { gotCurrentForm } from './form'
+
 export const GET_USER = 'GET_USER'
 export const getUser = (id) => ({
   type: GET_USER,
