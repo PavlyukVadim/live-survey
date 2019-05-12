@@ -1,7 +1,12 @@
 import React, { Component } from 'react'
-import { Divider, Grid, Segment } from 'semantic-ui-react'
+import {
+  Divider,
+  Grid,
+  Segment,
+} from 'semantic-ui-react'
 import LiveForm from 'react-live-form'
 import { set } from 'utils'
+import FormProps from './form-props'
 import FieldsController from './fields-controller'
 import FieldEditor from './field-editor'
 
@@ -73,7 +78,17 @@ class FormBuilder extends Component {
     formConfig: {
       fields: [],
     },
+    title: '',
+    description: '',
     activeFieldIndex: null,
+  }
+
+  onChangeFormProps = (prop, value) => {
+    this.setState(() => {
+      return {
+        [prop]: value,
+      }
+    })
   }
 
   onChangeFormConfig = (newFormConfig) => {
@@ -183,13 +198,23 @@ class FormBuilder extends Component {
   }
 
   render() {
-    const { activeFieldIndex, formConfig } = this.state
+    const {
+      activeFieldIndex,
+      formConfig,
+      title,
+      description,
+    } = this.state
     const fieldsOptions = this.getFieldsOptions()
     const activeField = formConfig.fields[activeFieldIndex] || {}
     console.log('formConfig', formConfig)
 
     return (
       <div>
+        <FormProps
+          title={title}
+          description={description}
+          onChangeFormProps={this.onChangeFormProps}
+        />
         <Segment>
           <Grid columns={2} relaxed='very'>
             <Grid.Column>
