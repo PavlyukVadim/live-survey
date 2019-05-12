@@ -8,6 +8,8 @@ import {
 import Header from './header'
 import CreateComponent from '../create'
 import Dashboard from '../dashboard'
+import SignIn from '../auth/sign-in'
+import SignUp from '../auth/sign-up'
 
 const App = () => (
   <div>
@@ -15,6 +17,8 @@ const App = () => (
     <HashRouter>
       <Switch>
         <Route exact path="/" component={Dashboard} />
+        <Route path="/sign-up" component={SignUp} />
+        <Route path="/sign-in" component={SignIn} />
         <Route path="/create" component={CreateComponent} />
         <Route path="/contact" component={Dashboard} />
       </Switch>
