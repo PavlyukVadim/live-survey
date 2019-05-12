@@ -12,6 +12,8 @@ import {
   gotFailure,
 } from '../actions'
 
+const host = 'http://localhost:3000'
+
 const apiConfig = {
   getYourForms: {
     triggerActionType: GET_YOUR_FORMS,
@@ -19,7 +21,7 @@ const apiConfig = {
     failureAction: gotFailure,
     getOptions: ({ id }) => ({
       method: 'get',
-      url: `http://localhost:${3000}/`,
+      url: `${host}/forms`,
     }),
     // triggerActionType: GET_USER,
     // successAction: gotUser,

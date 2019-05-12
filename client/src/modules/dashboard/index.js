@@ -5,41 +5,6 @@ import { getYourForms } from '../../actions/requestActions'
 import FormCard from './form-card'
 import './index.scss'
 
-console.log('getYourForms', getYourForms)
-
-const forms = [
-  {
-    id: 3,
-    title: 'dad',
-    description: 'fdsfdsf',
-    anwsers: '4',
-  },
-  {
-    id: 4,
-    title: 'dad',
-    description: 'fdsfdsf',
-    anwsers: '5',
-  },
-  {
-    id: 5,
-    title: 'dad',
-    description: 'fdsfdsf',
-    anwsers: '6',
-  },
-  {
-    id: 6,
-    title: 'dad',
-    description: 'fdsfdsf',
-    anwsers: '6',
-  },
-  {
-    id: 8,
-    title: 'dad',
-    description: 'fdsfdsf',
-    anwsers: '6',
-  },
-]
-
 class Dashboard extends Component {
   componentDidMount() {
     const { getForms } = this.props
@@ -49,6 +14,7 @@ class Dashboard extends Component {
   }
 
   render() {
+    const { forms = [] } = this.props
     const formCards = forms.map((form) => {
       return (
         <div
@@ -84,7 +50,7 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  ...state,
+  forms: state.forms && state.forms.yourForms,
 })
 
 const mapDispatchToProps = (dispatch) => ({

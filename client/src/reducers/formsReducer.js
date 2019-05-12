@@ -1,11 +1,11 @@
-import { GOT_USER } from '../actions'
+import { GOT_YOUR_FORMS } from '../actions/requestActions'
 
 export default (state = {}, action) => {
   switch (action.type) {
-    case GOT_USER:
+    case GOT_YOUR_FORMS:
       return {
         ...state,
-        ...action.data,
+        yourForms: action.data,
       }
     default:
       return state
