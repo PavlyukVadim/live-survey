@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --mode development --config client/webpack.config.js",
-    "build": "webpack --mode production --config client/webpack.config.js"
+    "build": "webpack --mode production --config client/webpack.config.js",
+    "server": "node server"
   },
   "repository": {
     "type": "git",
@@ -46,6 +47,7 @@
     "webpack-dev-server": "^3.2.1"
   },
   "dependencies": {
+    "express": "^4.16.4",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-live-form": "^1.0.10",
