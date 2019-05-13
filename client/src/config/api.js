@@ -1,14 +1,9 @@
 import {
   GET_YOUR_FORMS,
-  getYourForms,
-  GOT_YOUR_FORMS,
   gotYourForms,
-
   GET_CURRENT_FORM,
-  getCurrentForm,
-
-  GOT_CURRENT_FORM,
   gotCurrentForm,
+  CREATE_FORM,
 } from '../actions/requestActions'
 
 import {
@@ -39,14 +34,24 @@ const apiConfig = {
       url: `${host}/formById/${id}`,
     }),
   },
+  createForm: {
+    triggerActionType: CREATE_FORM,
+    successAction: gotCurrentForm,
+    failureAction: gotFailure,
+    getOptions: ({ id, form }) => ({
+      method: 'post',
+      url: `${host}/createForm/${id}`,
+      data: form,
+    }),
+  },
   createUser: {
     triggerActionType: CREATE_USER,
-    successAction: gotUser,
+    successAction: gotCurrentForm,
     failureAction: gotFailure,
-    getOptions: ({ user }) => ({
+    getOptions: ({ form }) => ({
       method: 'post',
       url: 'https://jsonplaceholder.typicode.com/posts',
-      data: user,
+      data: form,
     }),
   },
 }

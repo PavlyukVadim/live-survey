@@ -11,7 +11,7 @@ import FieldsController from './fields-controller'
 import FieldEditor from './field-editor'
 
 const getInitialState = (props) => {
-  const { preloadedForm } = props
+  const { preloadedForm = {} } = props
   const initialFormConfig = {
     fields: [],
   }
@@ -166,6 +166,11 @@ class LiveFormBuilder extends Component {
     return options
   }
 
+  onFormPublish = () => {
+    const { createNewForm } = this.props
+    createNewForm()
+  }
+
   render() {
     const {
       activeFieldIndex,
@@ -183,6 +188,7 @@ class LiveFormBuilder extends Component {
           title={title}
           description={description}
           onChangeFormProps={this.onChangeFormProps}
+          onFormPublish={this.onFormPublish}
         />
         <Segment>
           <Grid columns={2} relaxed='very'>

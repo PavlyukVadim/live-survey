@@ -1,17 +1,29 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { Container } from 'semantic-ui-react'
-import FormBuilder from './form-builder'
+import LiveFormBuilder from '../live-form-builder'
+import { createForm } from '../../actions/requestActions'
 
 class FormCreator extends Component {
   render() {
+    const { createNewForm } = this.props
     return (
       <div>
         <Container>
-          <FormBuilder />
+          <LiveFormBuilder createNewForm={createNewForm} />
         </Container>
       </div>
     )
   }
 }
 
-export default FormCreator
+const mapStateToProps = () => null
+
+const mapDispatchToProps = (dispatch) => ({
+  createNewForm: (id, form) => dispatch(createForm(id, form)),
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(FormCreator)

@@ -10,6 +10,9 @@ export { getCurrentForm } from './form'
 export { GOT_CURRENT_FORM } from './form'
 export { gotCurrentForm } from './form'
 
+export { CREATE_FORM } from './form'
+export { createForm } from './form'
+
 export const GET_USER = 'GET_USER'
 export const getUser = (id) => ({
   type: GET_USER,

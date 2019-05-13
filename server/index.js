@@ -135,6 +135,24 @@ app.get('/formById/:id', function (req, res) {
   res.send(formsById[id])
 })
 
+app.post('/createForm/:id', function (req, res) {
+  console.log(req.params)
+  formsById[4] = {
+    formConfig,
+    title: 'AAA 4',
+    description: 'description 4',
+  }
+  forms.push(
+    {
+      id: 9,
+      title: 'dad',
+      description: 'fdsfdsf',
+      anwsers: '9',
+    },
+  )
+  res.send(200)
+})
+
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!')
 })

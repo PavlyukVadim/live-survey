@@ -12,6 +12,7 @@ class FormProps extends Component {
       title,
       description,
       onChangeFormProps,
+      onFormPublish,
     } = this.props
 
     return (
@@ -33,7 +34,10 @@ class FormProps extends Component {
           />
         </Form.Field>
         <Form.Field>
-          <Button primary>
+          <Button
+            primary
+            onClick={onFormPublish}
+          >
             Publish form
           </Button>
         </Form.Field>
