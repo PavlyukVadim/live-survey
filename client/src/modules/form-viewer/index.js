@@ -6,9 +6,10 @@ import LiveFormBuilder from '../live-form-builder'
 
 class FormViewer extends Component {
   componentDidMount() {
-    const { getForm } = this.props
+    const { getForm, match = {} } = this.props
+    const { id } = match.params
     if (getForm) {
-      getForm()
+      getForm(id)
     }
   }
 
@@ -49,7 +50,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  getForm: () => dispatch(getCurrentForm()),
+  getForm: (id) => dispatch(getCurrentForm(id)),
 })
 
 export default connect(

@@ -66,33 +66,50 @@ const formConfig = {
   ],
 }
 
-const formById = {
-  formConfig,
-  title: 'AAA',
-  description: 'description',
+const formsById = {
+  0: {
+    formConfig,
+    title: 'AAA 0',
+    description: 'description 0',
+  },
+  1: {
+    formConfig,
+    title: 'AAA 1',
+    description: 'description 1',
+  },
+  2: {
+    formConfig,
+    title: 'AAA 2',
+    description: 'description 2',
+  },
+  3: {
+    formConfig,
+    title: 'AAA 3',
+    description: 'description 3',
+  },
 }
 
 const forms = [
   {
-    id: 3,
+    id: 0,
     title: 'dad',
     description: 'fdsfdsf',
     anwsers: '4',
   },
   {
-    id: 4,
+    id: 1,
     title: 'dad',
     description: 'fdsfdsf',
     anwsers: '5',
   },
   {
-    id: 5,
+    id: 2,
     title: 'dad',
     description: 'fdsfdsf',
     anwsers: '6',
   },
   {
-    id: 6,
+    id: 3,
     title: 'dad',
     description: 'fdsfdsf',
     anwsers: '6',
@@ -113,8 +130,9 @@ app.get('/forms', function (req, res) {
   res.send(forms)
 })
 
-app.get('/formById', function (req, res) {
-  res.send(formById)
+app.get('/formById/:id', function (req, res) {
+  const { id } = req.params
+  res.send(formsById[id])
 })
 
 app.listen(3000, function () {

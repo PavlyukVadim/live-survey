@@ -36,7 +36,7 @@ const apiConfig = {
     failureAction: gotFailure,
     getOptions: ({ id }) => ({
       method: 'get',
-      url: `${host}/formById`,
+      url: `${host}/formById/${id}`,
     }),
   },
   createUser: {
