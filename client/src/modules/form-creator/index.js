@@ -20,7 +20,7 @@ class FormCreator extends Component {
 const mapStateToProps = () => null
 
 const mapDispatchToProps = (dispatch) => ({
-  createNewForm: (id, form) => dispatch(createForm(id, form)),
+  createNewForm: (form) => dispatch(createForm(form)),
 })
 
 export default connect(

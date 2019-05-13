@@ -168,7 +168,13 @@ class LiveFormBuilder extends Component {
 
   onFormPublish = () => {
     const { createNewForm } = this.props
-    createNewForm()
+    const { formConfig, title, description } = this.state
+
+    createNewForm({
+      formConfig,
+      title,
+      description,
+    })
   }
 
   render() {

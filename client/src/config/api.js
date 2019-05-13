@@ -38,10 +38,10 @@ const apiConfig = {
     triggerActionType: CREATE_FORM,
     successAction: gotCurrentForm,
     failureAction: gotFailure,
-    getOptions: ({ id, form }) => ({
+    getOptions: ({ form }) => ({
       method: 'post',
-      url: `${host}/createForm/${id}`,
-      data: form,
+      url: `${host}/createForm`,
+      data: { form },
     }),
   },
   createUser: {

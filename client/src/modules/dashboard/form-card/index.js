@@ -13,7 +13,7 @@ class FormCard extends Component {
     const {
       title,
       description,
-      anwsers,
+      answers,
     } = form
 
     return (
@@ -22,7 +22,7 @@ class FormCard extends Component {
         <Card.Content description={description} />
         <Card.Content extra>
           <Icon name='user' />
-          {`${anwsers} Answers`}
+          {`${answers} Answers`}
         </Card.Content>
       </Card>
     )

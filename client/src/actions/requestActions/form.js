@@ -23,7 +23,7 @@ export const gotCurrentForm = (data) => ({
 })
 
 export const CREATE_FORM = 'CREATE_FORM'
-export const createForm = (id) => ({
+export const createForm = (form) => ({
   type: CREATE_FORM,
-  id,
+  form,
 })

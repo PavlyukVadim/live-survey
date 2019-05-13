@@ -1,156 +1,58 @@
 const express = require('express')
 const cors = require('cors')
-const app = express()
+const bodyParser = require('body-parser')
 
+const users = require('./users')
+const allForms = require('./forms')
+const answers = require('./answers')
+const userId = 0
+const userForms = allForms[userId]
+let lastFormId = 2
+
+const app = express()
 app.use(cors())
 
-const formConfig = {
-  fields: [
-    {
-      name: 'a',
-      fieldType: 'input',
-      dataType: 'int',
-      props: {
-        title: 'field a',
-      },
-      state: {
-        value: {
-          defaultValue: 5,
-        },
-      },
-    },
-    {
-      name: 'b',
-      fieldType: 'input',
-      dataType: 'int',
-      props: {
-        title: 'field b',
-      },
-    },
-    {
-      name: 'c',
-      fieldType: 'input',
-      dataType: 'string',
-      props: {
-        title: 'field c',
-      },
-      state: {
-        value: {
-          defaultValue: 0,
-          valueExpr: 'a + b',
-        },
-      },
-    },
-    {
-      name: 'd',
-      fieldType: 'input',
-      dataType: 'string',
-      props: {
-        title: 'field d',
-      },
-      state: {
-        value: {
-          defaultValue: 0,
-          valueExpr: 'c * 2',
-        },
-        display: {
-          defaultValue: false,
-          valueExpr: 'a > 10',
-        },
-        disabled: {
-          defaultValue: false,
-          valueExpr: 'a > 34',
-        },
-      },
-    },
-  ],
-}
+app.use(bodyParser.json()) // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({ // to support URL-encoded bodies
+  extended: true,
+}))
 
-const formsById = {
-  0: {
-    formConfig,
-    title: 'AAA 0',
-    description: 'description 0',
-  },
-  1: {
-    formConfig,
-    title: 'AAA 1',
-    description: 'description 1',
-  },
-  2: {
-    formConfig,
-    title: 'AAA 2',
-    description: 'description 2',
-  },
-  3: {
-    formConfig,
-    title: 'AAA 3',
-    description: 'description 3',
-  },
+const getFormById = (id) => {
+  return userForms.find((form) => form.id === +id)
 }
-
-const forms = [
-  {
-    id: 0,
-    title: 'dad',
-    description: 'fdsfdsf',
-    anwsers: '4',
-  },
-  {
-    id: 1,
-    title: 'dad',
-    description: 'fdsfdsf',
-    anwsers: '5',
-  },
-  {
-    id: 2,
-    title: 'dad',
-    description: 'fdsfdsf',
-    anwsers: '6',
-  },
-  {
-    id: 3,
-    title: 'dad',
-    description: 'fdsfdsf',
-    anwsers: '6',
-  },
-  {
-    id: 8,
-    title: 'dad',
-    description: 'fdsfdsf',
-    anwsers: '6',
-  },
-]
 
 app.get('/', function (req, res) {
   res.send('Hello World!')
 });
 
 app.get('/forms', function (req, res) {
-  res.send(forms)
+  const yourForms = userForms.map((form) => {
+    const { id, title,  description } = form
+    const answersNumber = (answers[id] || []).length
+    return {
+      id,
+      title,
+      description,
+      answers: answersNumber,
+    }
+  })
+  res.send(yourForms)
 })
 
 app.get('/formById/:id', function (req, res) {
   const { id } = req.params
-  res.send(formsById[id])
+  const formById = getFormById(id)
+  res.send(formById)
 })
 
-app.post('/createForm/:id', function (req, res) {
-  console.log(req.params)
-  formsById[4] = {
-    formConfig,
-    title: 'AAA 4',
-    description: 'description 4',
+app.post('/createForm', function (req, res) {
+  const { form } = req.body
+  const newForm = {
+    id: lastFormId++,
+    ...form,
   }
-  forms.push(
-    {
-      id: 9,
-      title: 'dad',
-      description: 'fdsfdsf',
-      anwsers: '9',
-    },
-  )
-  res.send(200)
+  userForms.push(newForm)
+  res.res.sendStatus(200)
 })
 
 app.listen(3000, function () {
