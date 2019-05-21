@@ -14,7 +14,7 @@ class MyHeader extends Component {
         break
       }
       case 'create': {
-        history.push('/forms/new')
+        history.push('/form/new')
         break
       }
       case 'logout': {

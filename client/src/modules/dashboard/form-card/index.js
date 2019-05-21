@@ -5,7 +5,7 @@ import { Card, Icon } from 'semantic-ui-react'
 class FormCard extends Component {
   onCardClick = () => {
     const { form: { id }, history } = this.props
-    history.push(`/forms/${id}`)
+    history.push(`/form/${id}`)
   }
 
   render() {
