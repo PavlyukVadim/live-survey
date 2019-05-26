@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import { Menu, Segment } from 'semantic-ui-react'
+import { connect } from 'react-redux'
+import { logOutAction } from '../../../actions'
 
 class MyHeader extends Component {
   state = { activeItem: 'dashboard' }
 
   handleItemClick = (e, { name }) => {
-    const { history } = this.props
+    const { history, logOut } = this.props
 
     switch (name) {
       case 'dashboard': {
@@ -18,6 +20,7 @@ class MyHeader extends Component {
         break
       }
       case 'logout': {
+        logOut()
         history.push('/sign-in')
         break
       }
@@ -60,4 +63,13 @@ class MyHeader extends Component {
   }
 }
 
-export default withRouter(MyHeader)
+const mapStateToProps = (state) => ({})
+
+const mapDispatchToProps = (dispatch) => ({
+  logOut: () => dispatch(logOutAction()),
+})
+
+export default withRouter(connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(MyHeader))

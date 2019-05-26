@@ -1,7 +1,7 @@
 export const GET_YOUR_FORMS = 'GET_YOUR_FORMS'
-export const getYourForms = (id) => ({
+export const getYourForms = (userId) => ({
   type: GET_YOUR_FORMS,
-  id,
+  userId,
 })
 
 export const GOT_YOUR_FORMS = 'GOT_YOUR_FORMS'
@@ -23,9 +23,10 @@ export const gotCurrentForm = (data) => ({
 })
 
 export const CREATE_FORM = 'CREATE_FORM'
-export const createForm = (form) => ({
+export const createForm = (form, userId) => ({
   type: CREATE_FORM,
   form,
+  userId,
 })
 
 export const GOT_CREATED_FORM = 'GOT_CREATED_FORM'
@@ -35,10 +36,11 @@ export const gotCreatedForm = (form) => ({
 })
 
 export const UPDATE_FORM = 'UPDATE_FORM'
-export const updateForm = (form, id) => ({
+export const updateForm = (form, id, userId) => ({
   type: UPDATE_FORM,
   form,
   id,
+  userId,
 })
 
 export const GOT_UPDATED_FORM = 'GOT_UPDATED_FORM'

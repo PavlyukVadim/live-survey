@@ -35,6 +35,7 @@ class FormViewer extends Component {
 
     const { id } = match.params
     const formLink = `${host}/fill-form/${id}`
+    const userId = localStorage.getItem('userId')
 
     const panes = [
       {
@@ -51,7 +52,7 @@ class FormViewer extends Component {
           <Tab.Pane attached={false}>
             <LiveFormBuilder
               preloadedForm={preloadedForm}
-              createNewForm={(form) => updateCurrentForm(form, id)}
+              createNewForm={(form) => updateCurrentForm(form, id, userId)}
             />
           </Tab.Pane>
         ),
@@ -81,7 +82,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   getForm: (id) => dispatch(getCurrentForm(id)),
   getAnswers: (id) => dispatch(getFormAnswers(id)),
-  updateCurrentForm: (form, id) => dispatch(updateForm(form, id)),
+  updateCurrentForm: (form, id, userId) => dispatch(updateForm(form, id, userId)),
 })
 
 export default connect(

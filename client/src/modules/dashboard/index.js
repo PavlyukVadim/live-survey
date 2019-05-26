@@ -9,7 +9,8 @@ class Dashboard extends Component {
   componentDidMount() {
     const { getForms } = this.props
     if (getForms) {
-      getForms()
+      const userId = localStorage.getItem('userId')
+      getForms(userId)
     }
   }
 
@@ -54,7 +55,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  getForms: () => dispatch(getYourForms()),
+  getForms: (userId) => dispatch(getYourForms(userId)),
 })
 
 export default connect(

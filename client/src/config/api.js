@@ -18,9 +18,10 @@ const apiConfig = {
     triggerActionType: GET_YOUR_FORMS,
     successAction: gotYourForms,
     failureAction: gotFailure,
-    getOptions: () => ({
-      method: 'get',
+    getOptions: ({ userId }) => ({
+      method: 'post',
       url: `${host}/forms`,
+      data: { userId },
     }),
   },
   getCurrentForm: {
@@ -36,20 +37,20 @@ const apiConfig = {
     triggerActionType: CREATE_FORM,
     successAction: gotCreatedForm,
     failureAction: gotFailure,
-    getOptions: ({ form }) => ({
+    getOptions: ({ form, userId }) => ({
       method: 'post',
       url: `${host}/createForm`,
-      data: { form },
+      data: { form, userId },
     }),
   },
   updateForm: {
     triggerActionType: UPDATE_FORM,
     successAction: gotUpdatedForm,
     failureAction: gotFailure,
-    getOptions: ({ id, form }) => ({
+    getOptions: ({ id, form, userId }) => ({
       method: 'post',
       url: `${host}/updateForm/${id}`,
-      data: { form },
+      data: { form, userId },
     }),
   },
   getFormAnswers: {

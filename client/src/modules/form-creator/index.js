@@ -8,10 +8,13 @@ import ModalExampleControlled from './result-modal'
 class FormCreator extends Component {
   render() {
     const { createNewForm } = this.props
+    const userId = localStorage.getItem('userId')
     return (
       <div>
         <Container>
-          <LiveFormBuilder createNewForm={createNewForm} />
+          <LiveFormBuilder
+            createNewForm={(form) => createNewForm(form, userId)}
+          />
           <ModalExampleControlled />
         </Container>
       </div>
@@ -22,7 +25,7 @@ class FormCreator extends Component {
 const mapStateToProps = () => null
 
 const mapDispatchToProps = (dispatch) => ({
-  createNewForm: (form) => dispatch(createForm(form)),
+  createNewForm: (form, userId) => dispatch(createForm(form, userId)),
 })
 
 export default connect(

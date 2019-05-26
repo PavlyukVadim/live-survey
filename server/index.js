@@ -52,7 +52,10 @@ app.post('/users', function (req, res) {
   res.sendStatus(200)
 })
 
-app.get('/forms', function (req, res) {
+app.post('/forms', function (req, res) {
+  const { userId } = req.body
+  console.log('/forms', userId)
+  const userForms = allForms[userId] || []
   const yourForms = userForms.map((form) => {
     const { id, title,  description } = form
     const answersNumber = (answers[id] || []).length
@@ -73,18 +76,21 @@ app.get('/formById/:id', function (req, res) {
 })
 
 app.post('/createForm', function (req, res) {
-  const { form } = req.body
+  const { form, userId } = req.body
+  console.log('/createForm', userId)
   const newForm = {
     id: lastFormId++,
     ...form,
   }
+  const userForms = allForms[userId] || []
   userForms.push(newForm)
   res.sendStatus(200)
 })
 
 app.post('/updateForm/:id', function (req, res) {
   const { id } = req.params
-  const { form } = req.body
+  const { form, userId } = req.body
+  const userForms = allForms[userId] || []
   const userForm = userForms
     .find((userForm) => (userForm.id == id))
   

@@ -9,6 +9,7 @@ import {
   USER_AUTHED,
   USER_NOT_EXIST,
 } from '../actions/requestActions'
+import { LOG_OUT } from '../actions'
 
 export default (state = {}, action) => {
   switch (action.type) {
@@ -55,7 +56,7 @@ export default (state = {}, action) => {
         userCreated: true,
       }
     case USER_AUTHED:
-      console.log('here')
+      localStorage.setItem('userId', action.user && action.user.id)
       return {
         ...state,
         user: action.user,
@@ -66,6 +67,13 @@ export default (state = {}, action) => {
         ...state,
         userNotExist: true,
       }
+    case LOG_OUT: {
+      localStorage.setItem('userId', null)
+      return {
+        ...state,
+        user: null,
+      }
+    }
     default:
       return state
   }
