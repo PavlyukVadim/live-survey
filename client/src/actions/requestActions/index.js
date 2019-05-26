@@ -16,6 +16,12 @@ export { createForm } from './form'
 export { GOT_CREATED_FORM } from './form'
 export { gotCreatedForm } from './form'
 
+export { SEND_FORM_ANSWERS } from './form'
+export { sendFormAnswers } from './form'
+
+export { FORM_ANSWERS_SENT } from './form'
+export { formAnswersSent } from './form'
+
 export const GET_USER = 'GET_USER'
 export const getUser = (id) => ({
   type: GET_USER,

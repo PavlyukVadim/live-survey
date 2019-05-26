@@ -8,6 +8,10 @@ import {
   CREATE_FORM,
   GOT_CREATED_FORM,
   gotCreatedForm,
+  SEND_FORM_ANSWERS,
+  sendFormAnswers,
+  FORM_ANSWERS_SENT,
+  formAnswersSent,
 } from '../actions/requestActions'
 
 import {
@@ -48,16 +52,26 @@ const apiConfig = {
       data: { form },
     }),
   },
-  createUser: {
-    triggerActionType: CREATE_USER,
-    successAction: gotCreatedForm,
+  sendFormAnswers: {
+    triggerActionType: SEND_FORM_ANSWERS,
+    successAction: formAnswersSent,
     failureAction: gotFailure,
-    getOptions: ({ form }) => ({
+    getOptions: ({ formId, answers }) => ({
       method: 'post',
-      url: 'https://jsonplaceholder.typicode.com/posts',
-      data: form,
+      url: `${host}/answers`,
+      data: { formId, answers },
     }),
   },
+  // createUser: {
+  //   triggerActionType: CREATE_USER,
+  //   successAction: gotCreatedForm,
+  //   failureAction: gotFailure,
+  //   getOptions: ({ form }) => ({
+  //     method: 'post',
+  //     url: 'https://jsonplaceholder.typicode.com/posts',
+  //     data: form,
+  //   }),
+  // },
 }
 
 export default apiConfig

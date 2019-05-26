@@ -28,6 +28,7 @@ app.get('/', function (req, res) {
 app.get('/forms', function (req, res) {
   const yourForms = userForms.map((form) => {
     const { id, title,  description } = form
+    console.log('answers', answers)
     const answersNumber = (answers[id] || []).length
     return {
       id,
@@ -52,6 +53,15 @@ app.post('/createForm', function (req, res) {
     ...form,
   }
   userForms.push(newForm)
+  res.sendStatus(200)
+})
+
+app.post('/answers', function (req, res) {
+  const { formId, newAnswer } = req.body
+  if (!answers[formId]) {
+    answers[formId] = []
+  }
+  answers[formId].push(newAnswer)
   res.sendStatus(200)
 })
 

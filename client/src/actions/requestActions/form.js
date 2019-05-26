@@ -33,3 +33,18 @@ export const gotCreatedForm = (form) => ({
   type: GOT_CREATED_FORM,
   form,
 })
+
+// answers
+
+export const SEND_FORM_ANSWERS = 'SEND_FORM_ANSWERS'
+export const sendFormAnswers = (formId, answers) => ({
+  type: SEND_FORM_ANSWERS,
+  formId,
+  answers,
+})
+
+export const FORM_ANSWERS_SENT = 'FORM_ANSWERS_SENT'
+export const formAnswersSent = (status) => ({
+  type: FORM_ANSWERS_SENT,
+  status,
+})
