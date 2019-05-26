@@ -1,27 +1,31 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Container, Tab } from 'semantic-ui-react'
-import { getCurrentForm } from '../../actions/requestActions'
+import { getCurrentForm, getFormAnswers } from '../../actions/requestActions'
+import Answers from './answers'
 import LiveFormBuilder from '../live-form-builder'
 
 class FormViewer extends Component {
   componentDidMount() {
-    const { getForm, match = {} } = this.props
+    const {
+      getForm,
+      getAnswers,
+      match = {},
+    } = this.props
     const { id } = match.params
-    if (getForm) {
-      getForm(id)
-    }
+    if (getForm) getForm(id)
+    if (getAnswers) getAnswers(id)
   }
 
   render() {
-    const { preloadedForm } = this.props
+    const { preloadedForm, answers } = this.props
 
     const panes = [
       {
         menuItem: 'Answers',
         render: () => (
           <Tab.Pane attached={false}>
-            Tab 2 Content
+            <Answers answers={answers} />
           </Tab.Pane>
         ),
       },
@@ -47,10 +51,12 @@ class FormViewer extends Component {
 
 const mapStateToProps = (state) => ({
   preloadedForm: state.forms && state.forms.currentForm,
+  answers: state.forms && state.forms.answers,
 })
 
 const mapDispatchToProps = (dispatch) => ({
   getForm: (id) => dispatch(getCurrentForm(id)),
+  getAnswers: (id) => dispatch(getFormAnswers(id)),
 })
 
 export default connect(

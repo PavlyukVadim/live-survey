@@ -4,6 +4,9 @@ export { GET_CURRENT_FORM, getCurrentForm } from './form'
 export { GOT_CURRENT_FORM, gotCurrentForm } from './form'
 export { CREATE_FORM, createForm } from './form'
 export { GOT_CREATED_FORM, gotCreatedForm } from './form'
+
+export { GET_FORM_ANSWERS, getFormAnswers } from './form'
+export { GOT_FORM_ANSWERS, gotFormAnswers } from './form'
 export { SEND_FORM_ANSWERS, sendFormAnswers } from './form'
 export { FORM_ANSWERS_SENT, formAnswersSent } from './form'
 

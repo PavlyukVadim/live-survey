@@ -35,6 +35,17 @@ export const gotCreatedForm = (form) => ({
 })
 
 // answers
+export const GET_FORM_ANSWERS = 'GET_FORM_ANSWERS'
+export const getFormAnswers = (formId) => ({
+  type: GET_FORM_ANSWERS,
+  formId,
+})
+
+export const GOT_FORM_ANSWERS = 'GOT_FORM_ANSWERS'
+export const gotFormAnswers = (answers) => ({
+  type: GOT_FORM_ANSWERS,
+  answers,
+})
 
 export const SEND_FORM_ANSWERS = 'SEND_FORM_ANSWERS'
 export const sendFormAnswers = (formId, answer) => ({

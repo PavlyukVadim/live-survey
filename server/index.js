@@ -56,6 +56,20 @@ app.post('/createForm', function (req, res) {
   res.sendStatus(200)
 })
 
+app.get('/answers/:id', function (req, res) {
+  const { id } = req.params
+  const result = answers[id]
+  if (!result) {
+    res.send([])  
+  }
+  answers[id].forEach((answer) => {
+    const { userId } = answer
+    const user = users.find((user) => user.id === userId)
+    answer.user = user
+  })
+  res.send(result)
+})
+
 app.post('/answers', function (req, res) {
   const { formId, answer } = req.body
   if (!answers[formId]) {

@@ -2,6 +2,7 @@ import {
   GET_YOUR_FORMS, gotYourForms,
   GET_CURRENT_FORM, gotCurrentForm,
   CREATE_FORM, gotCreatedForm,
+  GET_FORM_ANSWERS, gotFormAnswers,
   SEND_FORM_ANSWERS, formAnswersSent,
   gotFailure,
 } from '../actions/requestActions'
@@ -35,6 +36,15 @@ const apiConfig = {
       method: 'post',
       url: `${host}/createForm`,
       data: { form },
+    }),
+  },
+  getFormAnswers: {
+    triggerActionType: GET_FORM_ANSWERS,
+    successAction: gotFormAnswers,
+    failureAction: gotFailure,
+    getOptions: ({ formId }) => ({
+      method: 'get',
+      url: `${host}/answers/${formId}`,
     }),
   },
   sendFormAnswers: {
