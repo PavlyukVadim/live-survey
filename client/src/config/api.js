@@ -7,7 +7,8 @@ import {
   gotFailure,
 } from '../actions/requestActions'
 
-const host = 'http://localhost:3000'
+export const host = 'http://localhost:3000'
+export const frontendHost = 'http://localhost:8080/#'
 
 const apiConfig = {
   getYourForms: {

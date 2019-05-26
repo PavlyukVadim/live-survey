@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Container, Tab } from 'semantic-ui-react'
+import { Container, Tab, Message } from 'semantic-ui-react'
 import { getCurrentForm, getFormAnswers } from '../../actions/requestActions'
 import Answers from './answers'
 import LiveFormBuilder from '../live-form-builder'
+import config from '../../config'
+
+const { frontendHost: host } = config
 
 class FormViewer extends Component {
   componentDidMount() {
@@ -18,7 +21,14 @@ class FormViewer extends Component {
   }
 
   render() {
-    const { preloadedForm, answers } = this.props
+    const {
+      preloadedForm,
+      answers,
+      match = {},
+    } = this.props
+
+    const { id } = match.params
+    const formLink = `${host}/fill-form/${id}`
 
     const panes = [
       {
@@ -33,7 +43,9 @@ class FormViewer extends Component {
         menuItem: 'Form',
         render: () => (
           <Tab.Pane attached={false}>
-            <LiveFormBuilder preloadedForm={preloadedForm} />
+            <LiveFormBuilder
+              preloadedForm={preloadedForm}
+            />
           </Tab.Pane>
         ),
       },
@@ -42,6 +54,10 @@ class FormViewer extends Component {
     return (
       <div>
         <Container>
+          <Message>
+            <Message.Header>Form Link</Message.Header>
+            <p>{formLink}</p>
+          </Message>
           <Tab menu={{ secondary: true }} panes={panes} />
         </Container>
       </div>
