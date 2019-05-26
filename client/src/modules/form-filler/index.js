@@ -19,12 +19,12 @@ class FormFiller extends Component {
     }
   }
 
-  onSendAnswers = (answers) => {
-    const { sendAnswers, match = {} } = this.props
+  onSendAnswers = (answer) => {
+    const { sendAnswer, match = {} } = this.props
     const { id } = match.params
 
-    if (sendAnswers) {
-      sendAnswers(+id, answers)
+    if (sendAnswer) {
+      sendAnswer(+id, answer)
     }
   }
 
@@ -66,7 +66,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   getForm: (id) => dispatch(getCurrentForm(id)),
-  sendAnswers: (id, answers) => dispatch(sendFormAnswers(id, answers)),
+  sendAnswer: (id, answer) => dispatch(sendFormAnswers(id, answer)),
 })
 
 export default connect(

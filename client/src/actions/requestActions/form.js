@@ -37,10 +37,10 @@ export const gotCreatedForm = (form) => ({
 // answers
 
 export const SEND_FORM_ANSWERS = 'SEND_FORM_ANSWERS'
-export const sendFormAnswers = (formId, answers) => ({
+export const sendFormAnswers = (formId, answer) => ({
   type: SEND_FORM_ANSWERS,
   formId,
-  answers,
+  answer,
 })
 
 export const FORM_ANSWERS_SENT = 'FORM_ANSWERS_SENT'

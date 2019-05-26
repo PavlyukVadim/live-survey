@@ -1,25 +1,10 @@
 import {
-  GET_YOUR_FORMS,
-  getYourForms,
-  GOT_YOUR_FORMS,
-  gotYourForms,
-  GET_CURRENT_FORM,
-  gotCurrentForm,
-  CREATE_FORM,
-  GOT_CREATED_FORM,
-  gotCreatedForm,
-  SEND_FORM_ANSWERS,
-  sendFormAnswers,
-  FORM_ANSWERS_SENT,
-  formAnswersSent,
-} from '../actions/requestActions'
-
-import {
-  GET_USER,
-  CREATE_USER,
-  gotUser,
+  GET_YOUR_FORMS, gotYourForms,
+  GET_CURRENT_FORM, gotCurrentForm,
+  CREATE_FORM, gotCreatedForm,
+  SEND_FORM_ANSWERS, formAnswersSent,
   gotFailure,
-} from '../actions'
+} from '../actions/requestActions'
 
 const host = 'http://localhost:3000'
 
@@ -28,7 +13,7 @@ const apiConfig = {
     triggerActionType: GET_YOUR_FORMS,
     successAction: gotYourForms,
     failureAction: gotFailure,
-    getOptions: ({ id }) => ({
+    getOptions: () => ({
       method: 'get',
       url: `${host}/forms`,
     }),
@@ -56,10 +41,10 @@ const apiConfig = {
     triggerActionType: SEND_FORM_ANSWERS,
     successAction: formAnswersSent,
     failureAction: gotFailure,
-    getOptions: ({ formId, answers }) => ({
+    getOptions: ({ formId, answer }) => ({
       method: 'post',
       url: `${host}/answers`,
-      data: { formId, answers },
+      data: { formId, answer },
     }),
   },
   // createUser: {

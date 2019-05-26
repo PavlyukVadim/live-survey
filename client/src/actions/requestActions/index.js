@@ -1,26 +1,11 @@
-export { GET_YOUR_FORMS } from './form'
-export { getYourForms } from './form'
-
-export { GOT_YOUR_FORMS } from './form'
-export { gotYourForms } from './form'
-
-export { GET_CURRENT_FORM } from './form'
-export { getCurrentForm } from './form'
-
-export { GOT_CURRENT_FORM } from './form'
-export { gotCurrentForm } from './form'
-
-export { CREATE_FORM } from './form'
-export { createForm } from './form'
-
-export { GOT_CREATED_FORM } from './form'
-export { gotCreatedForm } from './form'
-
-export { SEND_FORM_ANSWERS } from './form'
-export { sendFormAnswers } from './form'
-
-export { FORM_ANSWERS_SENT } from './form'
-export { formAnswersSent } from './form'
+export { GET_YOUR_FORMS, getYourForms } from './form'
+export { GOT_YOUR_FORMS, gotYourForms } from './form'
+export { GET_CURRENT_FORM, getCurrentForm } from './form'
+export { GOT_CURRENT_FORM, gotCurrentForm } from './form'
+export { CREATE_FORM, createForm } from './form'
+export { GOT_CREATED_FORM, gotCreatedForm } from './form'
+export { SEND_FORM_ANSWERS, sendFormAnswers } from './form'
+export { FORM_ANSWERS_SENT, formAnswersSent } from './form'
 
 export const GET_USER = 'GET_USER'
 export const getUser = (id) => ({

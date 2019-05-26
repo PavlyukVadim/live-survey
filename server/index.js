@@ -57,11 +57,14 @@ app.post('/createForm', function (req, res) {
 })
 
 app.post('/answers', function (req, res) {
-  const { formId, newAnswer } = req.body
+  const { formId, answer } = req.body
   if (!answers[formId]) {
     answers[formId] = []
   }
-  answers[formId].push(newAnswer)
+  answers[formId].push({
+    userId,
+    answer,
+  })
   res.sendStatus(200)
 })
 

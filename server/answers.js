@@ -3,7 +3,7 @@ const answers = {
   0: [
     {
       userId: 1,
-      answers: {
+      answer: {
         a: { value: 5 },
         b: { value: "2" },
         c: { value: 7 },
@@ -12,7 +12,7 @@ const answers = {
     },
     {
       userId: 2,
-      answers: {
+      answer: {
         a: { value: 53 },
         b: { value: "24" },
         c: { value: 72 },
