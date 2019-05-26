@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Container } from 'semantic-ui-react'
 import LiveFormBuilder from '../live-form-builder'
 import { createForm } from '../../actions/requestActions'
+import ModalExampleControlled from './result-modal'
 
 class FormCreator extends Component {
   render() {
@@ -11,6 +12,7 @@ class FormCreator extends Component {
       <div>
         <Container>
           <LiveFormBuilder createNewForm={createNewForm} />
+          <ModalExampleControlled />
         </Container>
       </div>
     )

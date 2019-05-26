@@ -13,6 +13,9 @@ export { gotCurrentForm } from './form'
 export { CREATE_FORM } from './form'
 export { createForm } from './form'
 
+export { GOT_CREATED_FORM } from './form'
+export { gotCreatedForm } from './form'
+
 export const GET_USER = 'GET_USER'
 export const getUser = (id) => ({
   type: GET_USER,

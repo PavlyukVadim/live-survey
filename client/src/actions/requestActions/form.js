@@ -27,3 +27,9 @@ export const createForm = (form) => ({
   type: CREATE_FORM,
   form,
 })
+
+export const GOT_CREATED_FORM = 'GOT_CREATED_FORM'
+export const gotCreatedForm = (form) => ({
+  type: GOT_CREATED_FORM,
+  form,
+})

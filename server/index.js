@@ -52,7 +52,7 @@ app.post('/createForm', function (req, res) {
     ...form,
   }
   userForms.push(newForm)
-  res.res.sendStatus(200)
+  res.sendStatus(200)
 })
 
 app.listen(3000, function () {

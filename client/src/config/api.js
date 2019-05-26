@@ -1,9 +1,13 @@
 import {
   GET_YOUR_FORMS,
+  getYourForms,
+  GOT_YOUR_FORMS,
   gotYourForms,
   GET_CURRENT_FORM,
   gotCurrentForm,
   CREATE_FORM,
+  GOT_CREATED_FORM,
+  gotCreatedForm,
 } from '../actions/requestActions'
 
 import {
@@ -36,7 +40,7 @@ const apiConfig = {
   },
   createForm: {
     triggerActionType: CREATE_FORM,
-    successAction: gotCurrentForm,
+    successAction: gotCreatedForm,
     failureAction: gotFailure,
     getOptions: ({ form }) => ({
       method: 'post',
@@ -46,7 +50,7 @@ const apiConfig = {
   },
   createUser: {
     triggerActionType: CREATE_USER,
-    successAction: gotCurrentForm,
+    successAction: gotCreatedForm,
     failureAction: gotFailure,
     getOptions: ({ form }) => ({
       method: 'post',
