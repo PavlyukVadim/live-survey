@@ -5,6 +5,8 @@ import {
   UPDATE_FORM, gotUpdatedForm,
   GET_FORM_ANSWERS, gotFormAnswers,
   SEND_FORM_ANSWERS, formAnswersSent,
+  CREATE_USER, gotCreatedUser,
+  userNotExist, USER_AUTH, userAuthed,
   gotFailure,
 } from '../actions/requestActions'
 
@@ -69,16 +71,26 @@ const apiConfig = {
       data: { formId, answer },
     }),
   },
-  // createUser: {
-  //   triggerActionType: CREATE_USER,
-  //   successAction: gotCreatedForm,
-  //   failureAction: gotFailure,
-  //   getOptions: ({ form }) => ({
-  //     method: 'post',
-  //     url: 'https://jsonplaceholder.typicode.com/posts',
-  //     data: form,
-  //   }),
-  // },
+  createUser: {
+    triggerActionType: CREATE_USER,
+    successAction: gotCreatedUser,
+    failureAction: gotFailure,
+    getOptions: ({ user }) => ({
+      method: 'post',
+      url: `${host}/users`,
+      data: user,
+    }),
+  },
+  urerAuth: {
+    triggerActionType: USER_AUTH,
+    successAction: userAuthed,
+    failureAction: userNotExist,
+    getOptions: ({ user }) => ({
+      method: 'post',
+      url: `${host}/auth`,
+      data: { user },
+    }),
+  },
 }
 
 export default apiConfig

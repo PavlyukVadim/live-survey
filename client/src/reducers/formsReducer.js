@@ -5,6 +5,9 @@ import {
   GOT_UPDATED_FORM,
   GOT_FORM_ANSWERS,
   FORM_ANSWERS_SENT,
+  GOT_CREATED_USER,
+  USER_AUTHED,
+  USER_NOT_EXIST,
 } from '../actions/requestActions'
 
 export default (state = {}, action) => {
@@ -16,6 +19,8 @@ export default (state = {}, action) => {
         formCreated: false,
         answersSent: false,
         formUpdated: false,
+        userCreated: false,
+        userNotExist: false,
       }
     case GOT_CURRENT_FORM:
       return {
@@ -43,6 +48,23 @@ export default (state = {}, action) => {
       return {
         ...state,
         answersSent: true,
+      }
+    case GOT_CREATED_USER:
+      return {
+        ...state,
+        userCreated: true,
+      }
+    case USER_AUTHED:
+      console.log('here')
+      return {
+        ...state,
+        user: action.user,
+        userNotExist: false,
+      }
+    case USER_NOT_EXIST:
+      return {
+        ...state,
+        userNotExist: true,
       }
     default:
       return state

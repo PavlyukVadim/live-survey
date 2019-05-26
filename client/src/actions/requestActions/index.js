@@ -14,6 +14,14 @@ export { GOT_FORM_ANSWERS, gotFormAnswers } from './form'
 export { SEND_FORM_ANSWERS, sendFormAnswers } from './form'
 export { FORM_ANSWERS_SENT, formAnswersSent } from './form'
 
+export { CREATE_USER, createUser } from './user'
+export { GOT_CREATED_USER, gotCreatedUser } from './user'
+
+export { USER_AUTH, userAuth } from './user'
+export {
+  USER_NOT_EXIST, userNotExist,
+  USER_AUTHED, userAuthed,
+} from './user'
+
 export { GET_USER, getUser } from './user'
 export { GOT_USER, gotUser } from './user'
-export { CREATE_USER, createUser } from './user'

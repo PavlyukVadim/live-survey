@@ -8,6 +8,7 @@ const answers = require('./answers')
 const userId = 0
 const userForms = allForms[userId]
 let lastFormId = 2
+let lastUserId = 1
 
 const app = express()
 app.use(cors())
@@ -25,10 +26,35 @@ app.get('/', function (req, res) {
   res.send('Hello World!')
 });
 
+app.post('/auth', function (req, res) {
+  const { user } = req.body
+  const findUser = users.find((storedUser) => {
+    return (
+      storedUser.email === user.email &&
+      storedUser.password === user.password
+    )
+  })
+
+  if (findUser) {
+    res.send(findUser)
+  } else {
+    res.sendStatus(404)
+  }
+})
+
+app.post('/users', function (req, res) {
+  const { user } = req.body
+  const newUser = {
+    id: lastUserId++,
+    ...user,
+  }
+  users.push(newUser)
+  res.sendStatus(200)
+})
+
 app.get('/forms', function (req, res) {
   const yourForms = userForms.map((form) => {
     const { id, title,  description } = form
-    console.log('answers', answers)
     const answersNumber = (answers[id] || []).length
     return {
       id,
