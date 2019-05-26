@@ -34,6 +34,19 @@ export const gotCreatedForm = (form) => ({
   form,
 })
 
+export const UPDATE_FORM = 'UPDATE_FORM'
+export const updateForm = (form, id) => ({
+  type: UPDATE_FORM,
+  form,
+  id,
+})
+
+export const GOT_UPDATED_FORM = 'GOT_UPDATED_FORM'
+export const gotUpdatedForm = (form) => ({
+  type: GOT_UPDATED_FORM,
+  form,
+})
+
 // answers
 export const GET_FORM_ANSWERS = 'GET_FORM_ANSWERS'
 export const getFormAnswers = (formId) => ({

@@ -1,9 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Container, Tab, Message } from 'semantic-ui-react'
-import { getCurrentForm, getFormAnswers } from '../../actions/requestActions'
+import {
+  getCurrentForm,
+  getFormAnswers,
+  updateForm,
+} from '../../actions/requestActions'
 import Answers from './answers'
 import LiveFormBuilder from '../live-form-builder'
+import ResultModal from './result-modal'
 import config from '../../config'
 
 const { frontendHost: host } = config
@@ -25,6 +30,7 @@ class FormViewer extends Component {
       preloadedForm,
       answers,
       match = {},
+      updateCurrentForm,
     } = this.props
 
     const { id } = match.params
@@ -45,6 +51,7 @@ class FormViewer extends Component {
           <Tab.Pane attached={false}>
             <LiveFormBuilder
               preloadedForm={preloadedForm}
+              createNewForm={(form) => updateCurrentForm(form, id)}
             />
           </Tab.Pane>
         ),
@@ -60,6 +67,7 @@ class FormViewer extends Component {
           </Message>
           <Tab menu={{ secondary: true }} panes={panes} />
         </Container>
+        <ResultModal />
       </div>
     )
   }
@@ -73,6 +81,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   getForm: (id) => dispatch(getCurrentForm(id)),
   getAnswers: (id) => dispatch(getFormAnswers(id)),
+  updateCurrentForm: (form, id) => dispatch(updateForm(form, id)),
 })
 
 export default connect(

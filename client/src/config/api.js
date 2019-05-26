@@ -2,6 +2,7 @@ import {
   GET_YOUR_FORMS, gotYourForms,
   GET_CURRENT_FORM, gotCurrentForm,
   CREATE_FORM, gotCreatedForm,
+  UPDATE_FORM, gotUpdatedForm,
   GET_FORM_ANSWERS, gotFormAnswers,
   SEND_FORM_ANSWERS, formAnswersSent,
   gotFailure,
@@ -36,6 +37,16 @@ const apiConfig = {
     getOptions: ({ form }) => ({
       method: 'post',
       url: `${host}/createForm`,
+      data: { form },
+    }),
+  },
+  updateForm: {
+    triggerActionType: UPDATE_FORM,
+    successAction: gotUpdatedForm,
+    failureAction: gotFailure,
+    getOptions: ({ id, form }) => ({
+      method: 'post',
+      url: `${host}/updateForm/${id}`,
       data: { form },
     }),
   },

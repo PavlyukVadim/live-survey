@@ -56,6 +56,19 @@ app.post('/createForm', function (req, res) {
   res.sendStatus(200)
 })
 
+app.post('/updateForm/:id', function (req, res) {
+  const { id } = req.params
+  const { form } = req.body
+  const userForm = userForms
+    .find((userForm) => (userForm.id == id))
+  
+  userForm.title = form.title
+  userForm.description = form.description
+  userForm.formConfig = form.formConfig
+
+  res.sendStatus(200)
+})
+
 app.get('/answers/:id', function (req, res) {
   const { id } = req.params
   const result = answers[id]
