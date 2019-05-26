@@ -5,3 +5,9 @@ h3 {
 .full-height {
   height: calc(100vh - 100px);
 }
+
+.formWrapper {
+  margin: 0 auto;
+  max-width: 500px;
+  padding: 20px;
+}
