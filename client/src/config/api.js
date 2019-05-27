@@ -80,7 +80,7 @@ const apiConfig = {
     getOptions: ({ user }) => ({
       method: 'post',
       url: `${host}/users`,
-      data: user,
+      data: { user },
     }),
   },
   urerAuth: {

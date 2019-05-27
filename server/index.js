@@ -55,12 +55,13 @@ app.post('/users', function (req, res) {
     ...user,
   }
   users.push(newUser)
+  allForms[+newUser.id] = []
   res.sendStatus(200)
 })
 
 app.post('/forms', function (req, res) {
   const { userId = 0 } = req.body
-  const userForms = allForms[userId] || []
+  const userForms = allForms[+userId] || []
   const yourForms = userForms.map((form) => {
     const { id, title,  description } = form
     const answersNumber = (answers[id] || []).length
@@ -87,7 +88,7 @@ app.post('/createForm', function (req, res) {
     id: lastFormId++,
     ...form,
   }
-  const userForms = allForms[userId] || []
+  const userForms = allForms[+userId] || []
   userForms.push(newForm)
   answers[newForm.id] = []
   res.sendStatus(200)
