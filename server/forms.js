@@ -62,7 +62,7 @@ const formConfig = {
 
 // userId as key, formId is unique
 const forms = {
-  0: [
+  1: [
     {
       id: 0,
       title: 'Form 0',
@@ -76,7 +76,7 @@ const forms = {
       formConfig,
     },
   ],
-  1: [
+  2: [
     {
       id: 2,
       title: 'Form 2',

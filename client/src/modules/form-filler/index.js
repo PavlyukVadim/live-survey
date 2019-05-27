@@ -14,17 +14,18 @@ class FormFiller extends Component {
   componentDidMount() {
     const { getForm, match = {} } = this.props
     const { id } = match.params
+    const userId = localStorage.getItem('userId')
     if (getForm) {
-      getForm(id)
+      getForm(id, userId)
     }
   }
 
   onSendAnswers = (answer) => {
     const { sendAnswer, match = {} } = this.props
     const { id } = match.params
-
+    const userId = localStorage.getItem('userId')
     if (sendAnswer) {
-      sendAnswer(+id, answer)
+      sendAnswer(+id, answer, userId)
     }
   }
 
@@ -65,8 +66,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  getForm: (id) => dispatch(getCurrentForm(id)),
-  sendAnswer: (id, answer) => dispatch(sendFormAnswers(id, answer)),
+  getForm: (id, userId) => dispatch(getCurrentForm(id, userId)),
+  sendAnswer: (id, answer, userId) => dispatch(sendFormAnswers(id, answer, userId)),
 })
 
 export default connect(

@@ -21,7 +21,8 @@ class FormViewer extends Component {
       match = {},
     } = this.props
     const { id } = match.params
-    if (getForm) getForm(id)
+    const userId = localStorage.getItem('userId')
+    if (getForm) getForm(id, userId)
     if (getAnswers) getAnswers(id)
   }
 
@@ -80,7 +81,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  getForm: (id) => dispatch(getCurrentForm(id)),
+  getForm: (id, userId) => dispatch(getCurrentForm(id, userId)),
   getAnswers: (id) => dispatch(getFormAnswers(id)),
   updateCurrentForm: (form, id, userId) => dispatch(updateForm(form, id, userId)),
 })

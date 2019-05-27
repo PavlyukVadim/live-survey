@@ -11,9 +11,10 @@ export const gotYourForms = (data) => ({
 })
 
 export const GET_CURRENT_FORM = 'GET_CURRENT_FORM'
-export const getCurrentForm = (id) => ({
+export const getCurrentForm = (id, userId) => ({
   type: GET_CURRENT_FORM,
   id,
+  userId,
 })
 
 export const GOT_CURRENT_FORM = 'GOT_CURRENT_FORM'
@@ -63,10 +64,11 @@ export const gotFormAnswers = (answers) => ({
 })
 
 export const SEND_FORM_ANSWERS = 'SEND_FORM_ANSWERS'
-export const sendFormAnswers = (formId, answer) => ({
+export const sendFormAnswers = (formId, answer, userId) => ({
   type: SEND_FORM_ANSWERS,
   formId,
   answer,
+  userId,
 })
 
 export const FORM_ANSWERS_SENT = 'FORM_ANSWERS_SENT'

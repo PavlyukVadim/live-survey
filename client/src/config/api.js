@@ -28,9 +28,10 @@ const apiConfig = {
     triggerActionType: GET_CURRENT_FORM,
     successAction: gotCurrentForm,
     failureAction: gotFailure,
-    getOptions: ({ id }) => ({
-      method: 'get',
+    getOptions: ({ id, userId }) => ({
+      method: 'post',
       url: `${host}/formById/${id}`,
+      data: { userId },
     }),
   },
   createForm: {
@@ -66,10 +67,10 @@ const apiConfig = {
     triggerActionType: SEND_FORM_ANSWERS,
     successAction: formAnswersSent,
     failureAction: gotFailure,
-    getOptions: ({ formId, answer }) => ({
+    getOptions: ({ formId, answer, userId }) => ({
       method: 'post',
       url: `${host}/answers`,
-      data: { formId, answer },
+      data: { formId, answer, userId },
     }),
   },
   createUser: {
