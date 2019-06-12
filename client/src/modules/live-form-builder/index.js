@@ -177,6 +177,10 @@ class LiveFormBuilder extends Component {
     })
   }
 
+  componentDidCatch(error, info) {
+    console.log('error', error)
+  }
+
   render() {
     const {
       activeFieldIndex,
@@ -186,6 +190,7 @@ class LiveFormBuilder extends Component {
     } = this.state
     const fieldsOptions = this.getFieldsOptions()
     const activeField = formConfig.fields[activeFieldIndex] || {}
+    const copyOfFormConfig = JSON.parse(JSON.stringify(formConfig))
 
     return (
       <div>
@@ -218,7 +223,7 @@ class LiveFormBuilder extends Component {
               }
             </Grid.Column>
             <Grid.Column>
-              <LiveForm formConfig={formConfig} />
+              <LiveForm formConfig={copyOfFormConfig} />
             </Grid.Column>
           </Grid>
           <Divider vertical>preView</Divider>

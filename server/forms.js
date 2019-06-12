@@ -63,16 +63,28 @@ const formConfig = {
 // userId as key, formId is unique
 const forms = {
   1: [
+    // {
+    //   id: 0,
+    //   title: 'Form 0',
+    //   description: 'Description 0',
+    //   formConfig,
+    // },
+    // {
+    //   id: 1,
+    //   title: 'Form 1',
+    //   description: 'Description 1',
+    //   formConfig,
+    // },
     {
       id: 0,
-      title: 'Form 0',
-      description: 'Description 0',
+      title: 'Страхування транспортного засобу',
+      description: 'Опитування для оформлення КАСКО',
       formConfig,
     },
     {
       id: 1,
-      title: 'Form 1',
-      description: 'Description 1',
+      title: 'Терапевт',
+      description: 'Анкета запису на прийом до лікаря',
       formConfig,
     },
   ],

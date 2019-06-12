@@ -5731,9 +5731,9 @@ react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
 
-react-live-form@1.0.13:
-  version "1.0.13"
-  resolved "https://registry.yarnpkg.com/react-live-form/-/react-live-form-1.0.13.tgz#5deb35b6d3ee90f39ca6c53813bc950f160666b1"
+react-live-form@^1.0.14:
+  version "1.0.14"
+  resolved "https://registry.yarnpkg.com/react-live-form/-/react-live-form-1.0.14.tgz#72b90c4bc43fbfc570a224318bd43520d312b92c"
   dependencies:
     create-react-class "^15.6.2"
     expr-eval "^1.2.0"

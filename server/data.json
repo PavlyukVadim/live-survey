@@ -1,0 +1,154 @@
+{
+  "fields": [
+    {
+      "name": "type",
+      "fieldType": "select",
+      "props": {
+        "title": "Тип транспортного засобу: ",
+        "options": [
+          {
+            "value": "auto",
+            "content": "Авто"
+          },
+          {
+            "value": "moto",
+            "content": "Мото"
+          }
+        ]
+      },
+      "state": {
+        "value": {
+          "defaultValue": "auto",
+          "valueExpr": ""
+        },
+        "display": {
+          "defaultValue": true,
+          "valueExpr": ""
+        },
+        "disabled": {
+          "defaultValue": false,
+          "valueExpr": ""
+        }
+      }
+    },
+    {
+      "name": "auto_mark",
+      "fieldType": "select",
+      "props": {
+        "title": "Марка авто: ",
+        "options": [
+          {
+            "value": "bmw",
+            "content": "BMW"
+          },
+          {
+            "value": "audi",
+            "content": "Audi"
+          },
+          {
+            "value": "ford",
+            "content": "Ford"
+          }
+        ]
+      },
+      "state": {
+        "value": {
+          "defaultValue": "",
+          "valueExpr": ""
+        },
+        "display": {
+          "defaultValue": true,
+          "valueExpr": "type == 'auto'"
+        },
+        "disabled": {
+          "defaultValue": false,
+          "valueExpr": ""
+        }
+      }
+    },
+    {
+      "name": "moto_mark",
+      "fieldType": "input",
+      "props": {
+        "title": "Марка мото: "
+      },
+      "state": {
+        "value": {
+          "defaultValue": "",
+          "valueExpr": ""
+        },
+        "display": {
+          "defaultValue": true,
+          "valueExpr": "type == 'moto'"
+        },
+        "disabled": {
+          "defaultValue": false,
+          "valueExpr": ""
+        }
+      }
+    },
+    {
+      "name": "price",
+      "fieldType": "input",
+      "props": {
+        "title": "Початкова Ціна ТС: "
+      },
+      "state": {
+        "value": {
+          "defaultValue": "",
+          "valueExpr": ""
+        },
+        "display": {
+          "defaultValue": true,
+          "valueExpr": ""
+        },
+        "disabled": {
+          "defaultValue": false,
+          "valueExpr": ""
+        }
+      }
+    },
+    {
+      "name": "age",
+      "fieldType": "input",
+      "props": {
+        "title": "Вік ТС: "
+      },
+      "state": {
+        "value": {
+          "defaultValue": "",
+          "valueExpr": ""
+        },
+        "display": {
+          "defaultValue": true,
+          "valueExpr": ""
+        },
+        "disabled": {
+          "defaultValue": false,
+          "valueExpr": ""
+        }
+      }
+    },
+    {
+      "name": "total_sum",
+      "fieldType": "input",
+      "props": {
+        "title": "Страхова сума: "
+      },
+      "state": {
+        "value": {
+          "defaultValue": "",
+          "valueExpr": "price * ((10 - age) / 10)"
+        },
+        "display": {
+          "defaultValue": true,
+          "valueExpr": ""
+        },
+        "disabled": {
+          "defaultValue": false,
+          "valueExpr": ""
+        }
+      }
+    }
+  ]
+}
